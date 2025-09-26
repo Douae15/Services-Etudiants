@@ -1,0 +1,117 @@
+
+.logout img {
+  margin-top: 22px;
+  margin-left: 20px;
+}
+
+header {
+  position: relative;
+  height: 80px;
+  background: linear-gradient(135deg, #3b86f6, #1441a6);
+  display: grid;
+}
+
+section {
+  margin-bottom: 70px;
+}
+
+.section1 a{
+  cursor: pointer;
+}
+.back {
+  min-height: 100vh;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('/assets/background_ensa.jpg');
+}
+
+.section2 .logo {
+  position: absolute;
+  top: 0;
+  left: 48%;
+  display: grid;
+}
+
+.sect {
+  font-family: "Alan Sans", sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: rgb(255, 255, 255);
+  justify-items: center;
+  margin-top: 80px;
+}
+
+.Ecole {
+  font-size: 25px;
+  color: rgb(255, 255, 255);
+  font-family: "Alan Sans", sans-serif;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.section3_par2 {
+  position: bottom;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carts {
+  height: 60%;
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  gap: 10px;
+}
+
+.carts a{
+  text-decoration: none;
+}
+
+.cart {
+  border: 1px solid #fff;
+  display: grid;
+  grid-template-rows: 4fr 1fr;
+  padding: 5px;
+  background: linear-gradient(135deg, #3b86f6, #1441a6);
+  border-radius: 10px;
+  transition: all 0.5s ease;
+}
+.cart_image {
+  border-radius: 10px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.cart1_image {
+  background-image: url('/assets/reussite.PNG');
+}
+.cart2_image {
+  background-image: url('/assets/image_releve.jpg');
+}
+.cart3_image {
+  background-image: url('/assets/image3.jpg');
+}
+.cart4_image {
+  background-image: url('/assets/image1.jpg');
+}
+
+.cart:hover {
+  transform: translateY(-20px);
+  box-shadow: 3px 3px 5px rgb(184, 216, 253);
+}
+
+.titre {
+  margin-top: 5%;
+  font-size: 16px;
+  color: rgb(223, 234, 255);
+  display: inline-block;
+  font-weight: 600;
+  align-self: center;
+  text-align: center;
+  font-family: "Alan Sans", sans-serif;
+}

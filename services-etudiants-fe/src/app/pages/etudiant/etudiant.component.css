@@ -1,0 +1,251 @@
+.etudiant{
+  padding: 40px;
+}
+/* Container principal */
+.care {
+  max-width: max-content;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.verif{
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo img {
+  display: block;
+  margin: 0 auto 16px auto;
+}
+
+/* Titres */
+.titre {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #d0dfff;
+  margin-bottom: 24px;
+  font-family: "Alan Sans", sans-serif;
+}
+
+.typeDoc{
+  color: #2563eb;
+  font-family: "Alan Sans", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Champs de saisie */
+.care input[type='text'],
+.care input[type='email'],
+.care input[type='date'] {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+  font-family: "Alan Sans", sans-serif;
+}
+.verif input[type='text'],
+.verif input[type='email'],
+.verif input[type='date'] {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+.releve select,
+.reussite select {
+  width: 30%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  gap: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: "Alan Sans", sans-serif;
+}
+.releve,
+.reussite {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  margin-bottom: 12px;
+}
+.releve select .reussite select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* Icônes à gauche */
+.myinput-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 4px 8px;
+  margin-bottom: 12px;
+  background-color: #fff;
+}
+
+.myinput-group:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.myinput-group i {
+  color: #6b7280;
+}
+
+.stage-form .row-inputs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-family: "Alan Sans", sans-serif;
+}
+
+.stage-form .row-inputs input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.stage-form .row-inputs input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.stage-form select {
+  width: 372px;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.stage-form select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.stage-form button {
+  background-color: #2563eb;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.stage-form button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Messages d'erreur */
+.p-error {
+  color: #dc2626;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* Boutons */
+button {
+  background-color: #2563eb;
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 15px;
+  font-family: "Alan Sans", sans-serif;
+}
+
+button:hover {
+  background-color: #4f46e5;
+}
+
+/* Radios */
+.care label input[type='radio'] {
+  margin-right: 6px;
+}
+
+/* Séparations verticales */
+.space-y-4 > * + * {
+  margin-top: 16px;
+}
+
+.myflex {
+  display: flex;
+  width: max-content;
+  font-family: "Alan Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.gap-1 {
+  gap: 4px;
+}
+
+.gap-2 {
+  gap: 8px;
+}
+
+.gap-4 {
+  gap: 16px;
+}
+
+.mb-3 {
+  margin-bottom: 12px;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+.success-message {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  width: max-content;
+  justify-self: center;
+}
+
+.error-message {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  width: max-content;
+  justify-self: center;
+}

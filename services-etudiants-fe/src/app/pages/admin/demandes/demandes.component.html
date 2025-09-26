@@ -1,0 +1,168 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-nav">
+  <div class="container-fluid">
+    <a class="logout" (click)="logout()">
+      <img src="/assets/logout_50px.png" width="25px" height="25px" title="Se Déconnecter" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarText"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/admin/dashboard">Accueil</a>
+        </li>
+      </ul>
+      <a class="navbar-brand" href="#">ENSA</a>
+    </div>
+  </div>
+</nav>
+<div *ngIf="message" class="alert alert-success mt-2">
+  {{ message }}
+</div>
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h4>
+        {{ !isHistorique ? 'DEMANDES ' + getTypeLabel(type) : 'HISTORIQUE DES DEMANDES ' }}
+      </h4>
+
+      <a *ngIf="!isHistorique" class="btn btn-primary" [routerLink]="['/admin/historique', type]">
+        HISTORIQUE
+      </a>
+      <a *ngIf="isHistorique" class="btn btn-secondary" [routerLink]="['/admin/demandes', type]">
+        RETOUR
+      </a>
+    </div>
+
+    <div class="card-body">
+      <!-- Barre de recherche -->
+      <form class="mb-3">
+        <input
+          type="text"
+          class="form-control search-input"
+          placeholder="Rechercher par apogée..."
+          (input)="onSearch($event)"
+          name="search"
+        />
+      </form>
+
+      <!-- Tableau des demandes -->
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Num Apogée</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+
+            <!-- Colonnes conditionnelles -->
+            <ng-container *ngIf="type !== 'convention_stage'">
+              <th>Niveau</th>
+              <th>Filière</th>
+            </ng-container>
+
+            <ng-container *ngIf="type === 'convention_stage'">
+              <th class="filter-header">
+                Type de stage
+                <div class="dropdown-wrapper">
+                  <select (change)="onTypeStageFilter($event)">
+                    <option value="">Tous</option>
+                    <option value="PFA">PFA</option>
+                    <option value="PFE">PFE</option>
+                  </select>
+                  <span class="arrow">&#9662;</span>
+                </div>
+              </th>
+
+              <th>Sujet</th>
+              <th>Nom société</th>
+              <th>Encadrant ENSA</th>
+              <th>Date début</th>
+              <th>Date fin</th>
+            </ng-container>
+
+            <th class="filter-header">
+              Statut
+              <div class="dropdown-wrapper">
+                <select (change)="onStatutFilter($event)">
+                  <option value="">Tous</option>
+                  <option value="non traitée">Non traitée</option>
+                  <option value="acceptée">Validée</option>
+                  <option value="refusée">Refusée</option>
+                </select>
+                <span class="arrow">&#9662;</span>
+              </div>
+            </th>
+
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let demande of filteredDemandes">
+            <td>{{ demande.numApogee }}</td>
+            <td>{{ demande.nom }}</td>
+            <td>{{ demande.prenom }}</td>
+
+            <!-- Données conditionnelles -->
+            <ng-container *ngIf="type !== 'convention_stage'">
+              <td>{{ demande.niveau }}</td>
+              <td>{{ demande.filiere }}</td>
+            </ng-container>
+
+            <ng-container *ngIf="type === 'convention_stage'">
+              <td>{{ demande.typeStage }}</td>
+              <td>{{ demande.sujet }}</td>
+              <td>{{ demande.nomSociete }}</td>
+              <td>{{ demande.encadrantEnsa }}</td>
+              <td>{{ demande.dateDebut | date : 'dd/MM/yyyy' }}</td>
+              <td>{{ demande.dateFin | date : 'dd/MM/yyyy' }}</td>
+            </ng-container>
+
+            <td>
+              <span class="badge bg-warning text-dark" *ngIf="demande.statut === 'non traitée'">
+                Non traitée
+              </span>
+              <span class="badge bg-success" *ngIf="demande.statut === 'acceptée'">Acceptée</span>
+              <span class="badge bg-danger" *ngIf="demande.statut === 'refusée'">Refusée</span>
+            </td>
+
+            <td>
+              <!-- Actions normales -->
+              <ng-container *ngIf="!isHistorique">
+                <button
+                  class="btn btn-info btn-sm me-1"
+                  (click)="updateStatut(demande.id, 'acceptée')"
+                >
+                  Accepter
+                </button>
+                <button class="btn btn-danger btn-sm" (click)="updateStatut(demande.id, 'refusée')">
+                  Refuser
+                </button>
+              </ng-container>
+
+              <!-- Actions historiques -->
+              <ng-container *ngIf="isHistorique">
+                <button
+                  class="btn btn-secondary btn-sm me-1"
+                  (click)="downloadPdf(demande.type, demande.id)"
+                >
+                  Télécharger PDF
+                </button>
+                <button
+                  class="btn btn-warning btn-sm"
+                  (click)="resendEmail(demande.type, demande.id, demande.statut)"
+                >
+                  Renvoyer Email
+                </button>
+              </ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

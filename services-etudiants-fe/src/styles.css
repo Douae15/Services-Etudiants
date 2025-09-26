@@ -1,0 +1,41 @@
+@import 'primeicons/primeicons.css';
+
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+app-etudiant {
+  /*background-color: #c9d8fc;*/
+  min-height: 100vh;
+  display: block;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  /*background-repeat: no-repeat;*/
+  background-image: linear-gradient(rgba(36, 70, 92, 0.5) 100%, rgba(0, 50, 80, 0.5) 100%),
+    url('/assets/Ensa1.jpg');
+}
+
+app-login-admin {
+  background-image: url('/assets/background_ensa.jpg');
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+}
+
+app-home {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(180deg, #0f172a 0%, #071025 100%);
+}
+
+body {
+  /*background-color: #c9d8fc;*/
+  font-family: 'Arvo', serif;
+  margin: 0;
+  padding: 0;
+  /*background-repeat: no-repeat;*/
+}

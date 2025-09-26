@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="logo">
+    <img src="images/logo_ensa.png" alt="" width="100px" />
+  </div>
+  <div class="header">
+    <h1>Connexion</h1>
+    <h3>Connectez-vous pour accéder à votre espace administrateur</h3>
+  </div>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="main">
+    <form (ngSubmit)="onLogin()">
+      <span>
+        <i class="fa fa-user"></i>
+        <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required /> </span
+      ><br />
+      <span>
+        <i class="fa fa-lock"></i>
+        <input
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Mot de passe"
+          required
+        /> </span
+      ><br />
+      <button type="submit" name="login">Se connecter</button>
+    </form>
+  </div>
+</div>

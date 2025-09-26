@@ -1,0 +1,185 @@
+<div class="etudiant">
+  <div class="logo mb-4">
+    <img src="assets/logo_ensa.png" width="90" height="80" />
+  </div>
+
+  <h2 class="titre">Bienvenue dans l'espace étudiant</h2>
+
+  <!-- Formulaire initial -->
+  <div *ngIf="!infosValid" class="verif">
+    <!-- Email -->
+    <div class="myinput-group">
+      <i class="pi pi-envelope"></i>
+      <input
+        type="email"
+        [(ngModel)]="email"
+        placeholder="Email"
+        name="email"
+        (ngModelChange)="onFieldsChange()"
+      />
+    </div>
+
+    <!-- Numéro Apogée -->
+    <div class="myinput-group">
+      <i class="pi pi-id-card"></i>
+      <input
+        type="text"
+        [(ngModel)]="numApogee"
+        placeholder="Numéro Apogée"
+        name="numApogee"
+        (ngModelChange)="onFieldsChange()"
+      />
+    </div>
+
+    <!-- CIN -->
+    <div class="myinput-group">
+      <i class="pi pi-user"></i>
+      <input
+        type="text"
+        [(ngModel)]="cin"
+        placeholder="CIN"
+        name="cin"
+        (ngModelChange)="onFieldsChange()"
+      />
+    </div>
+    <small *ngIf="cin && cin.length < 4" class="p-error">CIN invalide</small>
+
+    <div *ngIf="isChecking" class="info-msg">Vérification en cours…</div>
+    <div *ngIf="erreur" class="p-error">{{ erreur }}</div>
+  </div>
+
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Formulaire dynamique -->
+  <div *ngIf="infosValid">
+    <div class="care">
+      <h3 class="typeDoc">Type du document :</h3>
+      <div class="myflex gap-4 mb-4">
+        <label
+          ><input type="radio" name="demande" (click)="choisirType('scolarite')" /> Attestation de
+          scolarité</label
+        >
+        <label
+          ><input type="radio" name="demande" (click)="choisirType('releve')" /> Relevé de
+          notes</label
+        >
+        <label
+          ><input type="radio" name="demande" (click)="choisirType('stage')" /> Convention de
+          stage</label
+        >
+        <label
+          ><input type="radio" name="demande" (click)="choisirType('reussite')" /> Attestation de
+          réussite</label
+        >
+      </div>
+
+      <!-- Scolarité -->
+      <div *ngIf="typeDemande === 'scolarite'">
+        <button (click)="envoyerForm()">Envoyer attestation de scolarité</button>
+      </div>
+
+      <!-- Relevé -->
+      <div *ngIf="typeDemande === 'releve'" class="releve">
+        <select [(ngModel)]="filiereReleve">
+          <option value="" disabled selected>Choisir Filière</option>
+          <option value="2AP">2AP</option>
+          <option value="GI">GI</option>
+          <option value="GSTR">GSTR</option>
+          <option value="GM">GM</option>
+          <option value="GC">GC</option>
+          <option value="SCM">SCM</option>
+        </select>
+
+        <select [(ngModel)]="niveauReleve">
+          <option value="" disabled selected>Choisir Niveau</option>
+          <option *ngFor="let n of getNiveauxDisponibles(filiereReleve)" [value]="n">
+            {{ n }}
+          </option>
+        </select>
+
+        <button (click)="envoyerForm()">Envoyer relevé de notes</button>
+      </div>
+
+      <!-- Stage -->
+      <div *ngIf="typeDemande === 'stage'" class="stage-form">
+        <div class="row-inputs">
+          <select [(ngModel)]="stageData.type_stage">
+            <option value="" disabled selected>Choisir Type de Stage</option>
+            <option value="PFA">PFA</option>
+            <option value="PFE">PFE</option>
+          </select>
+          <input type="text" placeholder="Sujet" [(ngModel)]="stageData.sujet" />
+        </div>
+
+        <div class="row-inputs">
+          <input type="text" placeholder="Encadrant ENSA" [(ngModel)]="stageData.encadrant_ensa" />
+          <input
+            type="text"
+            placeholder="Encadrant Entreprise"
+            [(ngModel)]="stageData.encadrant_entreprise"
+          />
+        </div>
+
+        <div class="row-inputs">
+          <input type="date" placeholder="Date début" [(ngModel)]="stageData.date_debut" />
+          <input type="date" placeholder="Date fin" [(ngModel)]="stageData.date_fin" />
+        </div>
+
+        <div class="row-inputs">
+          <input type="text" placeholder="Société" [(ngModel)]="stageData.nom_societe" />
+          <input
+            type="text"
+            placeholder="Adresse Société"
+            [(ngModel)]="stageData.adresse_societe"
+          />
+        </div>
+
+        <div class="row-inputs">
+          <input type="text" placeholder="Tél Société" [(ngModel)]="stageData.tele_societe" />
+          <input type="email" placeholder="Email Société" [(ngModel)]="stageData.mail_societe" />
+        </div>
+
+        <div class="row-inputs">
+          <input
+            type="text"
+            placeholder="Representant Société"
+            [(ngModel)]="stageData.representant_societe"
+          />
+          <input
+            type="text"
+            placeholder="Position Representant"
+            [(ngModel)]="stageData.position_representant"
+          />
+        </div>
+        <button (click)="envoyerForm()">Envoyer convention de stage</button>
+      </div>
+
+      <!-- Réussite -->
+      <div *ngIf="typeDemande === 'reussite'" class="reussite">
+        <select [(ngModel)]="filiereReussite">
+          <option value="" disabled selected>Choisir Filière</option>
+          <option value="2AP">2AP</option>
+          <option value="GI">GI</option>
+          <option value="GSTR">GSTR</option>
+          <option value="GM">GM</option>
+          <option value="GC">GC</option>
+          <option value="SCM">SCM</option>
+        </select>
+
+        <select [(ngModel)]="niveauReussite">
+          <option value="" disabled selected>Choisir Niveau</option>
+          <option *ngFor="let n of getNiveauxDisponibles(filiereReussite)" [value]="n">
+            {{ n }}
+          </option>
+        </select>
+
+        <button (click)="envoyerForm()">Envoyer attestation de réussite</button>
+      </div>
+    </div>
+  </div>
+</div>

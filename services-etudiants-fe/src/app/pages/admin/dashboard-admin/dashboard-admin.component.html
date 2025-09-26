@@ -1,0 +1,46 @@
+<div class="back">
+  <header>
+    <div class="section1">
+      <a class="logout" (click)="logout()">
+        <img src="/assets/logout_50px.png" width="30px" height="30px" title="Se Déconnecter" />
+      </a>
+      <div class="section2">
+        <div class="logo">
+          <img src="/assets/logo_ensate.png" width="90px" height="80px" style />
+        </div>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="sect">
+      <h1>Bienvenue dans l'espace administrateur de</h1>
+      <h2 class="Ecole">l'Ecole Nationale des Sciences Appliquées de Tétouan</h2>
+    </div>
+  </section>
+
+  <footer>
+    <div class="section3_par2">
+      <div class="carts">
+        <a class="cart cart1" routerLink="/admin/demandes/attest_reussite">
+          <div class="cart_image cart1_image"></div>
+          <h4 class="titre">Demandes d'attestation de réussite</h4>
+        </a>
+
+        <a class="cart cart2" routerLink="/admin/demandes/releve_notes">
+          <div class="cart_image cart2_image"></div>
+          <h4 class="titre">Demandes de relevé de notes</h4>
+        </a>
+
+        <a class="cart cart3" routerLink="/admin/demandes/convention_stage">
+          <div class="cart_image cart3_image"></div>
+          <h4 class="titre">Demandes de convention de stage</h4>
+        </a>
+
+        <a class="cart cart4" routerLink="/admin/demandes/attest_scolarite">
+          <div class="cart_image cart4_image"></div>
+          <h4 class="titre">Demandes d'attestation de scolarité</h4>
+        </a>
+      </div>
+    </div>
+  </footer>
+</div>

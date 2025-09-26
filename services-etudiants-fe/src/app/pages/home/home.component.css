@@ -1,0 +1,64 @@
+.homepage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  background: #ffffff;
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 100%;
+  max-width: 420px;
+}
+
+.card h1 {
+  font-size: 28px;
+  color: #111827;
+  margin-bottom: 12px;
+  font-family: "Alan Sans", sans-serif;;
+}
+
+.card p {
+  font-size: 16px;
+  color: #6b7280;
+  margin-bottom: 24px;
+  font-family: "Alan Sans", sans-serif;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn.admin {
+  background-color: #4f46e5;
+  color: white;
+}
+
+.btn.admin:hover {
+  background-color: #4338ca;
+}
+
+.btn.student {
+  background-color: #10b981;
+  color: white;
+}
+
+.btn.student:hover {
+  background-color: #059669;
+}
